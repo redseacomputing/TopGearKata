@@ -25,11 +25,11 @@ package com.lagerweij;
 
 public class GearBox {
 
-    public static final int[] MIN_RPM = {500, 500, 500, 500, 500, 500};
-    public static final int[] MAX_RPM = {2000};
+    public static final int[] MIN_RPM = {0, 500, 500, 500, 500, 500, 500};
+    public static final int[] MAX_RPM = {0, 2000 , 2000, 2000, 2000, 2000, Integer.MAX_VALUE};
+
     private int gear = 0;
     private int lastRpm = 0;
-
 
     public void switchGear(int actualRpm) {
         lastRpm = actualRpm;
@@ -52,7 +52,7 @@ public class GearBox {
     }
 
     private void changeGear(int actualRpm) {
-        if (actualRpm > MAX_RPM[0])
+        if (actualRpm > MAX_RPM[gear])
             gear++;
         else if (actualRpm < MIN_RPM[gear]) {
             gear--;
