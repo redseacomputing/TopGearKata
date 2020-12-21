@@ -29,15 +29,15 @@ public class GearBox {
     private int lastRpm = 0;
 
     public void switchGear(int actualRpm) {
-        if (isGoingReverse()) {
-            // do nothing!
-        } else {
-            if (IsCarMoving()) {
-                changeGear(actualRpm);
-            }
-            keepGearInRange();
-        }
         lastRpm = actualRpm;
+        if (isGoingReverse()) {
+            return;
+        }
+
+        if (IsCarMoving()) {
+            changeGear(actualRpm);
+        }
+        keepGearInRange();
     }
 
     private boolean isGoingReverse() {
