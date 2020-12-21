@@ -46,4 +46,8 @@ public class GearBox {
 			}
 			lastRpm = actualRpm;
 		}
+
+	public int getGear() {
+		return this.gear;
+	}
 }
