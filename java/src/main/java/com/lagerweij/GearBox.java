@@ -29,24 +29,39 @@ public class GearBox {
     private int lastRpm = 0;
 
     public void switchGear(int actualRpm) {
-        if (gear < 0) {
+        if (isGoingReverse()) {
             // do nothing!
-            lastRpm = actualRpm;
         } else {
-            if (gear > 0) {
-                if (actualRpm > 2000)
-                    gear++;
-                else if (actualRpm < 500) {
-                    gear--;
-                }
+            if (IsCarMoving()) {
+                changeGear(actualRpm);
             }
+            keepGearInRange();
         }
+        lastRpm = actualRpm;
+    }
+
+    private boolean isGoingReverse() {
+        return gear < 0;
+    }
+
+    private boolean IsCarMoving() {
+        return gear > 0;
+    }
+
+    private void changeGear(int actualRpm) {
+        if (actualRpm > 2000)
+            gear++;
+        else if (actualRpm < 500) {
+            gear--;
+        }
+    }
+
+    private void keepGearInRange() {
         if (gear > 6) {
             gear--;
         } else if (gear < 1) {
             gear++;
         }
-        lastRpm = actualRpm;
     }
 
     public int getGear() {
