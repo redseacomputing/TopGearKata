@@ -25,29 +25,31 @@ package com.lagerweij;
 
 public class GearBox {
 
-	private int gear = 0;
-	private int lastRpm = 0;
+    private int gear = 0;
+    private int lastRpm = 0;
 
-	public void switchGear(int actualRpm) {
-		if (gear < 0) {
-			// do nothing!
-			lastRpm = actualRpm;
-		} else {
-			if (gear > 0) {
-				if (actualRpm > 2000)
-					gear++;
-				} else if (actualRpm < 500) {
-					gear--;
-				}
-			} if (gear > 6) {
-				gear--;
-			} else if (gear < 1) {
-				gear++;
-			}
-			lastRpm = actualRpm;
-		}
+    public void switchGear(int actualRpm) {
+        if (gear < 0) {
+            // do nothing!
+            lastRpm = actualRpm;
+        } else {
+            if (gear > 0) {
+                if (actualRpm > 2000)
+                    gear++;
+                else if (actualRpm < 500) {
+                    gear--;
+                }
+            }
+        }
+        if (gear > 6) {
+            gear--;
+        } else if (gear < 1) {
+            gear++;
+        }
+        lastRpm = actualRpm;
+    }
 
-	public int getGear() {
-		return this.gear;
-	}
+    public int getGear() {
+        return this.gear;
+    }
 }
