@@ -25,6 +25,8 @@ package com.lagerweij;
 
 public class GearBox {
 
+    public static final int MIN_RPM = 500;
+    public static final int MAX_RPM = 2000;
     private int gear = 0;
     private int lastRpm = 0;
 
@@ -49,9 +51,9 @@ public class GearBox {
     }
 
     private void changeGear(int actualRpm) {
-        if (actualRpm > 2000)
+        if (actualRpm > MAX_RPM)
             gear++;
-        else if (actualRpm < 500) {
+        else if (actualRpm < MIN_RPM) {
             gear--;
         }
     }
