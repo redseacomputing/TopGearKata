@@ -1,6 +1,5 @@
 package com.lagerweij;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -31,11 +30,27 @@ public class GearBoxTest {
         assertEquals(1,gearBox.getGear());
     }
 
+    @Test
+    public void should_not_switch_over_sixth_gear() {
+        GearBox gearBox = new GearBox();
+        gearBox.switchGear(1001);
+        gearBox.switchGear(2001);
+        gearBox.switchGear(2001);
+        gearBox.switchGear(2001);
+        gearBox.switchGear(2001);
+        gearBox.switchGear(2001);
+        assertEquals(6, gearBox.getGear());
+
+        gearBox.switchGear(2001);
+        assertEquals(6,gearBox.getGear());
+
+    }
+
     /*
     *   Testfälle:
-    *   +Wir sind im ersten Gang, haben 1000 Umdrehungen und sind immer noch im ersten Gang _
-    *   +Sind im ersten Gang mit 2000 Umdrehungen und gehen in den zweiten Gang _
-    *   +Sind im zweiten Gang, haben 500 Umdrehungen und sind im ersten Gang
+    *
+    *
+    *
     *   +
     * */
 }
